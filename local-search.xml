@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2021/02/24/sql%E5%91%BD%E4%BB%A4/"/>
+    <url>/2021/02/24/sql%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><ul><li>从指定表中查出所有列的数据</li></ul><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> 表名称<br></code></pre></td></tr></table></figure><ul><li>从指定表中查出指定列的数据</li></ul><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> 列名称<span class="hljs-keyword">from</span> 表名称<br></code></pre></td></tr></table></figure><h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><ul><li>向指定的数据表中插入一条数</li></ul><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">inster</span> into 表名称(列<span class="hljs-number">1</span>, 列<span class="hljs-number">2</span>, ...) values(值<span class="hljs-number">1</span>, 值<span class="hljs-number">2</span>, ...)<br></code></pre></td></tr></table></figure><h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><ul><li> 更新数据表中的某一列或多列数据</li></ul><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">update 表名称 <span class="hljs-builtin-name">set</span> 列<span class="hljs-attribute">1</span>=值1, 列<span class="hljs-attribute">2</span>=值2 where 列名称=值;<br></code></pre></td></tr></table></figure><h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><ul><li>删除数据表中的某一行或多行数据</li></ul><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> 表名称 <span class="hljs-keyword">where</span> 列名称=值<br></code></pre></td></tr></table></figure><h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> 表名称 <span class="hljs-keyword">where</span> 列名称 运算符 值<br></code></pre></td></tr></table></figure><p>常见的运算符号</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">1.</span>&gt; 和 &gt;= <br><span class="hljs-number">2.</span>&lt; 和 &lt;=<br><span class="hljs-number">3.</span>!= 或 &lt;&gt;<br><span class="hljs-number">4.</span>=<br><span class="hljs-number">5.</span><span class="hljs-keyword">between</span><br><span class="hljs-number">6.</span><span class="hljs-keyword">like</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2021/02/22/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/"/>
+    <url>/2021/02/22/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/</url>
+    
+    <content type="html"><![CDATA[<h2 id="模块缓存机制"><a href="#模块缓存机制" class="headerlink" title="模块缓存机制"></a>模块缓存机制</h2><p>模块加载一次之后会被缓存，每次调用同一模块之后都解析到同一文件，返回的是相同结果，不会导致模块代码呗多次执行</p><h2 id="核心模块的加载机制"><a href="#核心模块的加载机制" class="headerlink" title="核心模块的加载机制"></a>核心模块的加载机制</h2><p>require()会优先加载核心模块</p><h2 id="自定义模块的加载机制"><a href="#自定义模块的加载机制" class="headerlink" title="自定义模块的加载机制"></a>自定义模块的加载机制</h2><ul><li><p>使用 require() 方法去加载自定义模块必须有路径标示，否则会被当做核心模块去加载</p></li><li><p>require()模块不加后缀名称的话会按照文件名+(.js、 .json  .node) 的顺序依次添加之后重新加载</p></li><li><p>  当传递一个目录标识符给 require () 方法时, 加载的顺序先在加载的目录下查找 package.json 的文件, 并寻找 main 属性作为 require 的入口，如果找不到,  Node.js 将会试图加载目录下的 文件名+.js 或 文件名+.node 文件</p></li></ul><h2 id="第三方模块的加载机制"><a href="#第三方模块的加载机制" class="headerlink" title="第三方模块的加载机制"></a>第三方模块的加载机制</h2><ul><li>如果传递给 require() 的模块标识符不是一个核心模块，也没有以 路径开头，那么 Node.js 会从当前模块的父目录开始，尝试从它的 /node_modules 目录里加载模块果还是没有找到，则移动到再上一层父目录，直到文件系统的根目录。</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2021/02/22/npm%E5%91%BD%E4%BB%A4/"/>
+    <url>/2021/02/22/npm%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>查看在自己电脑本机的 npm ：<br>npm -v</p></li><li><p>下载一个指定的包<br>npm i 包的具体名称</p></li><li><p>查看一个指定包<br>npm view 包的具体名称</p></li><li><p>下载指定版本的包<br>npm i 包的具体名称@版本号</p></li><li><p>快速创建包管理配置文件<br>npm init -y</p></li><li><p>根据 package.json 文件中记录的包名称和版本信息全部进行下载<br>npm install/nmp i</p></li><li><p>卸载指定的包<br>npm uninstall 包名称</p></li><li><p>安装开发测试阶段用到的包<br>npm i –save-dev 包名称@版本号/npm i -D 包名称@版本号</p></li><li><p>全局包下载<br>npm i -g 包名称</p></li><li><p>全局包卸载<br>npm uninstall -g 包名称</p></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2021/01/28/hello-world/"/>
+    <url>/2021/01/28/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>一种传承、<br>一种轮回、<br>两代帝王、<br>一个家庭的悲剧、</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
